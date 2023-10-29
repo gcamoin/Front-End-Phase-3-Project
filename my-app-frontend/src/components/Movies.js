@@ -25,6 +25,8 @@ function Movies({movie, handleDeleteMovie}) {
             <span>{movie.genre.name}</span>
             <br></br>
             <span> Released in {year}</span>
+            <br></br>
+            <button onClick={handleDeleteMovie}>Remove Movie</button>
             
           
 

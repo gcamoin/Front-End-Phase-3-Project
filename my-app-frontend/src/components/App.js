@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react"
 import MovieContainer from "/home/gcamoin/Front-End-Phase-3-Project/my-app-frontend/src/components/MovieContainer.js"
 import Header from "/home/gcamoin/Front-End-Phase-3-Project/my-app-frontend/src/components/Header.js"
-
+import AddMovieForm from "/home/gcamoin/Front-End-Phase-3-Project/my-app-frontend/src/components/AddMovieForm.js"
 
 function App() {
   
@@ -19,6 +19,10 @@ function App() {
     .then((r) => r.json())
     .then(setGenres)
   }, [])
+
+  function handleAddMovie(newMovie) {
+    setMovies([...movies, newMovie])
+  }
   
   function handleDeleteMovie(movieToDelete) {
     const updatedMovies = movies.filter((movie) => movie.id !== movieToDelete.id)
@@ -29,6 +33,7 @@ function App() {
     <div className="App">
       <Header />
       <MovieContainer movies={movies} genres={genres} handleDeleteMovie={handleDeleteMovie}/>
+      <AddMovieForm handleAddMovie={handleAddMovie}/>
       
       
     </div>
