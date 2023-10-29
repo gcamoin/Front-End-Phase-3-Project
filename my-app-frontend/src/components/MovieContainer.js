@@ -7,11 +7,13 @@ function MovieContainer({movies}){
             key={movie.id}
             movie={movie}
         />
+    
     ));
 
     return (
         <div className="moviecards">
             {movieCards}
+            
         </div>
     )
 

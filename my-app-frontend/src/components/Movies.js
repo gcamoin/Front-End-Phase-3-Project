@@ -2,9 +2,9 @@ import React from "react"
 
 
 function Movies({movie}) {
-    const {id, title, year, likes, dislikes, genre_id,} = movie
+    const {id, title, year, likes, dislikes} = movie
 
-
+    
     
     return (
         <div className="movie">
@@ -14,7 +14,11 @@ function Movies({movie}) {
             <button className="like-btn"> 👍 {likes}</button>
             <button className="dislike-btn"> 👎 {dislikes} </button>
             <br></br>
+            <span>{movie.genre.name}</span>
+            <br></br>
             <span> Released in {year}</span>
+            
+          
 
         </div>
     )
