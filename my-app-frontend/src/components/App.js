@@ -20,11 +20,15 @@ function App() {
     .then(setGenres)
   }, [])
   
+  function handleDeleteMovie(movieToDelete) {
+    const updatedMovies = movies.filter((movie) => movie.id !== movieToDelete.id)
+    setMovies(updatedMovies)
+  }
 
   return (
     <div className="App">
       <Header />
-      <MovieContainer movies={movies} genres={genres}/>
+      <MovieContainer movies={movies} genres={genres} handleDeleteMovie={handleDeleteMovie}/>
       
       
     </div>

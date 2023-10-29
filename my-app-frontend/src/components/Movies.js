@@ -1,8 +1,16 @@
 import React from "react"
 
 
-function Movies({movie}) {
+function Movies({movie, handleDeleteMovie}) {
     const {id, title, year, likes, dislikes} = movie
+
+    function handleDeleteMovie() {
+        fetch(`http://localhost:9292/movies/${id}`, {
+            method: "DELETE",
+        })
+            .then((r) => r.json())
+            .then((deletedMovie) => handleDeleteMovie(deletedMovie))
+    }
 
     
     
