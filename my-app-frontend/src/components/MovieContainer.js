@@ -7,14 +7,18 @@ function MovieContainer({movies, handleDeleteFood}){
             key={movie.id}
             movie={movie}
             handleDeleteFood={handleDeleteFood}
+            
 
         />
+        
     
     ));
+    
 
     return (
         <div className="moviecards">
             {movieCards}
+            
             
         </div>
     )

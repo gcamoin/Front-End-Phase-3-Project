@@ -9,7 +9,9 @@ function Movies({movie, handleDeleteMovie}) {
             method: "DELETE",
         })
             .then((r) => r.json())
-            .then((deletedMovie) => handleDeleteMovie(deletedMovie))
+            .then((data) => {
+                handleDeleteMovie(movie)
+            })
     }
 
     
@@ -19,12 +21,12 @@ function Movies({movie, handleDeleteMovie}) {
             <h2 className="movie-title">
                 {title}
             </h2>
-            <button className="like-btn"> 👍 {likes}</button>
-            <button className="dislike-btn"> 👎 {dislikes} </button>
-            <br></br>
-            <span>{movie.genre.name}</span>
+            {/* <span>{movie.genre.name}</span> */}
             <br></br>
             <span> Released in {year}</span>
+            <br></br>
+            <button className="like-btn"> 👍 {likes}</button>
+            <button className="dislike-btn"> 👎 {dislikes} </button>
             <br></br>
             <button onClick={handleDeleteMovie}>Remove Movie</button>
             

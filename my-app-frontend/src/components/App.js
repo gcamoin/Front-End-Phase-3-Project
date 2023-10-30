@@ -3,6 +3,7 @@ import MovieContainer from "/home/gcamoin/Front-End-Phase-3-Project/my-app-front
 import Header from "/home/gcamoin/Front-End-Phase-3-Project/my-app-frontend/src/components/Header.js"
 import AddMovieForm from "/home/gcamoin/Front-End-Phase-3-Project/my-app-frontend/src/components/AddMovieForm.js"
 
+
 function App() {
   
   const [movies, setMovies] = useState([])
@@ -32,9 +33,9 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <MovieContainer movies={movies} genres={genres} handleDeleteMovie={handleDeleteMovie}/>
       <AddMovieForm handleAddMovie={handleAddMovie}/>
       
+      <MovieContainer movies={movies} genres={genres} handleDeleteMovie={handleDeleteMovie}/>
       
     </div>
   );
