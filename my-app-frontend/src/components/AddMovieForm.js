@@ -1,9 +1,12 @@
 import {React, useState} from "react"
+import MovieContainer from "./GenreContainer"
 
 function AddMovieForm({handleAddMovie}) {
     const [title, setTitle] = useState("")
     const [year, setYear] = useState("")
     const [genre, setGenre] = useState("")
+    const [likes, setLikes] = useState(0)
+    const [dislikes, setDislikes] = useState(0)
    
     function onChangeTitle(e) {
         setTitle(e.target.value)
@@ -11,6 +14,10 @@ function AddMovieForm({handleAddMovie}) {
 
     function onChangeYear(e) {
         setYear(e.target.value)
+    }
+
+    function onChangeGenre(e) {
+        setGenre(e.target.value)
     }
    
 
@@ -24,8 +31,11 @@ function AddMovieForm({handleAddMovie}) {
             body: JSON.stringify({
                 title: title,
                 year: year,
-                genre: genre,
-                // movie_id: movieId,
+                likes: likes,
+                dislikes: dislikes,
+                genre: genre
+
+
             }),
         })
         .then((r) => r.json())
@@ -46,6 +56,12 @@ function AddMovieForm({handleAddMovie}) {
                     placeholder="year movies was released"
                     value={year}
                     onChange={onChangeYear}
+                />
+                <input 
+                    type="text"
+                    placeholder="enter genre"
+                    value={genre}
+                    onChange={onChangeGenre}
                 />
 
                 <button type="submit">Add</button>
