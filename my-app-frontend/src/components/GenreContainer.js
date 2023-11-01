@@ -1,12 +1,12 @@
 import React from "react"
-import Genres from "/home/gcamoin/Front-End-Phase-3-Project/my-app-frontend/src/components/Genres.js"
+import GenreCard from "/home/gcamoin/Front-End-Phase-3-Project/my-app-frontend/src/components/GenreCard.js"
 
-function GenreContainer({genres, movieTitles}){
+function GenreContainer({genres, handleDeleteMovie}){
     const genreList = genres.map((genre) => (
-        <Genres 
+        <GenreCard 
             key={genre.id}
             genre={genre}
-            movieTitles={movieTitles}
+           handleDeleteMovie={handleDeleteMovie}
             
            
             

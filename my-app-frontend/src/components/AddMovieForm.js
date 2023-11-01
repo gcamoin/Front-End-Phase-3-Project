@@ -1,5 +1,5 @@
 import {React, useState} from "react"
-import MovieContainer from "./GenreContainer"
+
 
 function AddMovieForm({handleAddMovie}) {
     const [title, setTitle] = useState("")
@@ -57,12 +57,7 @@ function AddMovieForm({handleAddMovie}) {
                     value={year}
                     onChange={onChangeYear}
                 />
-                <input 
-                    type="text"
-                    placeholder="enter genre"
-                    value={genre}
-                    onChange={onChangeGenre}
-                />
+                
 
                 <button type="submit">Add</button>
                 
