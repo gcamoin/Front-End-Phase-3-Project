@@ -5,12 +5,12 @@ import MovieCard from "/home/gcamoin/Front-End-Phase-3-Project/my-app-frontend/s
 function GenreCard({handleDeleteMovie, genre}) {
     const {id, name, movies} = genre
   
- 
 const movieList = movies?.map((movie) => (
     <MovieCard 
         key={movie.id}
         movie={movie}
         handleDeleteMovie={handleDeleteMovie}
+      
         
     
     />
@@ -26,7 +26,7 @@ const movieList = movies?.map((movie) => (
             {movieList}
 
                 
-               
+             
                 
           
         </div>

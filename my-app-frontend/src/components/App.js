@@ -8,9 +8,9 @@ import AddGenreForm from "/home/gcamoin/Front-End-Phase-3-Project/my-app-fronten
 function App() {
   
   const [genres, setGenres] = useState([])
-  const [movies, setMovies] = useState([])
 
 
+  
   useEffect(() => {
     fetch("http://localhost:9292/genres")
     .then((r) => r.json())
@@ -25,23 +25,45 @@ function App() {
   }
 
   function handleAddMovie(newMovie) {
-    setMovies([...movies, newMovie])
+    const genreMovieArray = genres.map(genre => {
+      if(genre.id === newMovie.genre_id) {
+        const updatedMovies = [...genre.movies, newMovie]
+        const updatedGenre = {...genre, updatedMovies}
+        console.log(updatedGenre)
+        
+        return updatedGenre
+      } else {
+        return genre
+      }
+    })
+    setGenres(genreMovieArray)
+    console.log(genreMovieArray)
+    
   }
+    
 
-  function handleDeleteMovie(movie){
-  console.log(movie)  
-     genres.map((genre) => genre.id )
-  // map through genre arrays
-  // find the genre with id that matches movie with genre id
-  // filter through movies with specific genre id
-  // 
-  }
-
+  function handleDeleteMovie(movieToDelete){
+  
+  const genreArray = genres.map(genre => {
+    if(genre.id === movieToDelete.genre_id) {
+      const updatedMovies = genre.movies.filter((movie) => movieToDelete.id !== movie.id)
+    const updatedGenre = {...genre, movies:updatedMovies}
+    return updatedGenre
+      
+    } else {
+      return genre
+    }
+  })
+  
+  setGenres(genreArray)
+  
+  
+}
 
   return (
     <div className="App">
       <Header />
-      <AddMovieForm handleAddMovie={handleAddMovie}/>
+      <AddMovieForm handleAddMovie={handleAddMovie} genres={genres}/>
       <AddGenreForm handleAddGenre={handleAddGenre}/>
       
       <GenreContainer  genres={genres} handleDeleteMovie={handleDeleteMovie} />

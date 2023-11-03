@@ -1,12 +1,13 @@
 import {React, useState} from "react"
 
 
-function AddMovieForm({handleAddMovie}) {
+function AddMovieForm({handleAddMovie, genres, genre_id}) {
     const [title, setTitle] = useState("")
     const [year, setYear] = useState("")
-    const [genre, setGenre] = useState("")
     const [likes, setLikes] = useState(0)
     const [dislikes, setDislikes] = useState(0)
+
+    
    
     function onChangeTitle(e) {
         setTitle(e.target.value)
@@ -16,9 +17,7 @@ function AddMovieForm({handleAddMovie}) {
         setYear(e.target.value)
     }
 
-    function onChangeGenre(e) {
-        setGenre(e.target.value)
-    }
+    
    
 
     function handleSubmit(e) {
@@ -33,7 +32,10 @@ function AddMovieForm({handleAddMovie}) {
                 year: year,
                 likes: likes,
                 dislikes: dislikes,
-                genre: genre
+                // genre_id: genre_id
+                
+                
+               
 
 
             }),
@@ -58,7 +60,11 @@ function AddMovieForm({handleAddMovie}) {
                     onChange={onChangeYear}
                 />
                 
-
+                <label for="genres">Genres</label>
+                <select id="genres">
+                    {genres.map((genre) => <option>{genre.name}</option>)}
+                    
+                </select>
                 <button type="submit">Add</button>
                 
                 </form>

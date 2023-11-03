@@ -1,5 +1,5 @@
 import React from "react"
-
+import AddMovieForm from  "/home/gcamoin/Front-End-Phase-3-Project/my-app-frontend/src/components/AddMovieForm.js"
 
 function MovieCard({movie, handleDeleteMovie}) {
 const {id, title, year, likes, dislikes} = movie
@@ -23,8 +23,7 @@ return (
         <button className='dislike-btn'>👎 {dislikes}</button>
         <button className='deleteMovie' onClick={deleteMovie}>Remove Movie</button>
         
-
-
+  
     </div>
     
 
