@@ -7,6 +7,9 @@ const [editTitle, setEditTitle] = useState(title)
 const [editYear, setEditYear] = useState(year)
 const [editMovie, setEditMovie] = useState(false)
 
+
+
+
 function deleteMovie() {
     fetch(`http://localhost:9292/movies/${id}`, {
         method: "DELETE",
