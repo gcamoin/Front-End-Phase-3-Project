@@ -6,7 +6,7 @@ function AddMovieForm({handleAddMovie, genres, genre_id}) {
     const [year, setYear] = useState("")
     const [likes, setLikes] = useState(0)
     const [dislikes, setDislikes] = useState(0)
-
+    const [genreID, setGenreID] = useState("")
     
    
     function onChangeTitle(e) {
@@ -17,8 +17,14 @@ function AddMovieForm({handleAddMovie, genres, genre_id}) {
         setYear(e.target.value)
     }
 
+    // function onChangeGenre() {
+    //     const idGenre = genres.map((genre) => genre.id)
+    //     setGenreID(idGenre)
+    // }
+    
     
    
+    
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -32,7 +38,7 @@ function AddMovieForm({handleAddMovie, genres, genre_id}) {
                 year: year,
                 likes: likes,
                 dislikes: dislikes,
-                // genre_id: genre_id
+                genre_id: genreID
                 
                 
                
@@ -41,7 +47,8 @@ function AddMovieForm({handleAddMovie, genres, genre_id}) {
             }),
         })
         .then((r) => r.json())
-        .then((newMovie) => handleAddMovie(newMovie))
+        .then((movieToAdd) => handleAddMovie(movieToAdd))
+        
     }
         return (
             <div className="add-movie-form">
@@ -60,14 +67,16 @@ function AddMovieForm({handleAddMovie, genres, genre_id}) {
                     onChange={onChangeYear}
                 />
                 
-                <label for="genres">Genres</label>
-                <select id="genres">
-                    {genres.map((genre) => <option>{genre.name}</option>)}
+                
+                <select id="genres" value={genreID} onChange={(e) => setGenreID(e.target.value)}>
+                    <option key={0}>Select Genre</option>
+                    {genres.map((genre) => <option key={genre.id} value={genre.id}>{genre.name}</option>)}
                     
                 </select>
                 <button type="submit">Add</button>
                 
                 </form>
+                <p>{genreID}</p>
             </div>
         )
 

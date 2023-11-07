@@ -5,6 +5,7 @@ import AddMovieForm from "/home/gcamoin/Front-End-Phase-3-Project/my-app-fronten
 import AddGenreForm from "/home/gcamoin/Front-End-Phase-3-Project/my-app-frontend/src/components/AddGenreForm.js"
 
 
+
 function App() {
   
   const [genres, setGenres] = useState([])
@@ -24,24 +25,44 @@ function App() {
     setGenres([...genres, newGenre])
   }
 
-  function handleAddMovie(newMovie) {
+  function handleAddMovie(movieToAdd) {
+    console.log(movieToAdd)
     const genreMovieArray = genres.map(genre => {
-      if(genre.id === newMovie.genre_id) {
-        const updatedMovies = [...genre.movies, newMovie]
-        const updatedGenre = {...genre, updatedMovies}
-        console.log(updatedGenre)
-        
+      if(genre.id === movieToAdd.genre_id) {
+        const updatedMovies = [...genre.movies, movieToAdd]
+        const updatedGenre = {...genre, movies:updatedMovies}
         return updatedGenre
+
       } else {
         return genre
       }
     })
     setGenres(genreMovieArray)
-    console.log(genreMovieArray)
+    
     
   }
-    
 
+  function handleUpdateMovie(movieToUpdate) {
+    const updatedMovieArray = genres.map((genre) => {
+       if(genre.id === movieToUpdate.genre_id) {
+      const updatedMovies = genre.movies.map((movie) => {
+        if(movie.id === movieToUpdate.id) {
+          return movieToUpdate
+        } else {
+          return movie
+        }
+      })
+      const updatedGenre = {...genre, movies:updatedMovies}
+    return updatedGenre
+      
+    } else {
+      return genre
+    }}
+      
+  )
+    setGenres(updatedMovieArray)
+  }
+   
   function handleDeleteMovie(movieToDelete){
   
   const genreArray = genres.map(genre => {
@@ -66,7 +87,8 @@ function App() {
       <AddMovieForm handleAddMovie={handleAddMovie} genres={genres}/>
       <AddGenreForm handleAddGenre={handleAddGenre}/>
       
-      <GenreContainer  genres={genres} handleDeleteMovie={handleDeleteMovie} />
+      
+      <GenreContainer  genres={genres} handleDeleteMovie={handleDeleteMovie} handleUpdateMovie={handleUpdateMovie}/>
    
       
       
